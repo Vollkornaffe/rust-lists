@@ -1,5 +1,6 @@
 use std::mem;
 
+#[derive(Debug)]
 pub struct List {
     head: Link,
 }
@@ -29,11 +30,13 @@ impl List {
     }
 }
 
+#[derive(Debug)]
 enum Link {
     Empty,
     More(Box<Node>),
 }
 
+#[derive(Debug)]
 struct Node {
     elem: i32,
     next: Link,
