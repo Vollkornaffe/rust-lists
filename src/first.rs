@@ -28,14 +28,26 @@ impl List {
             },
         }
     }
+
+    pub fn pop_node(&mut self) -> Link {
+        match mem::replace(&mut self.head, Link::Empty) {
+            Link::Empty => Link::Empty,
+            Link::More(mut node) => {
+                self.head = mem::replace(&mut node.next, Link::Empty);
+                Link::More(node)
+            },
+        }
+    }
 }
 
-enum Link {
+#[derive(Debug)]
+pub enum Link {
     Empty,
     More(Box<Node>),
 }
 
-struct Node {
+#[derive(Debug)]
+pub struct Node {
     elem: i32,
     next: Link,
 }

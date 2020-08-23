@@ -27,7 +27,8 @@ mod tests {
         list.push(13);
         list.push(14);
 
-
+        println!("{:#?}", list);
+        println!("{:?}", list.pop_node());
         println!("{:#?}", list);
 
     }
