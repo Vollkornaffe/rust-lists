@@ -1,6 +1,6 @@
 use std::mem;
+use std::fmt;
 
-#[derive(Debug)]
 pub struct List {
     head: Link,
 }
@@ -30,15 +30,31 @@ impl List {
     }
 }
 
-#[derive(Debug)]
 enum Link {
     Empty,
     More(Box<Node>),
 }
 
-#[derive(Debug)]
 struct Node {
     elem: i32,
     next: Link,
 }
 
+impl fmt::Debug for List {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let mut dbg_struct = f.debug_struct("List");
+        let mut link = &self.head;
+        loop { 
+            match &link {
+                Link::Empty => {
+                    break;
+                },
+                Link::More(node) => {
+                    dbg_struct.field("elem", &node.elem);
+                    link = &node.next;
+                },
+            }
+        }
+        dbg_struct.finish()
+    }
+}

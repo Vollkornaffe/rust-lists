@@ -28,7 +28,7 @@ mod tests {
         list.push(14);
 
 
-        println!("{:?}", list);
+        println!("{:#?}", list);
 
     }
 
