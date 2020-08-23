@@ -31,6 +31,8 @@ mod tests {
         println!("{:?}", list.pop_node());
         println!("{:#?}", list);
 
+        assert_eq!(list.pop(), Some(13));
+
     }
 
 
